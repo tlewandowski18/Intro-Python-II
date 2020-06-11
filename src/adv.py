@@ -65,28 +65,16 @@ while True:
         if choice == "q":
             print('Your quest has ended')
             break
-        elif choice == "n":
-            player.current_room = player.current_room.n_to
-            print(f'\n{player.current_room.name}\n')
-            print(player.current_room.description)
-        elif choice == "s":
-            player.current_room = player.current_room.s_to
-            print(f'\n{player.current_room.name}\n')
-            print(player.current_room.description)
-        elif choice == "e":
-            player.current_room = player.current_room.e_to
-            print(f'\n{player.current_room.name}\n')
-            print(player.current_room.description)
-        elif choice == "w":
-            player.current_room = player.current_room.w_to
-            print(f'\n{player.current_room.name}\n')
-            print(player.current_room.description)
+        elif choice == "n" or choice == "s" or choice == "e" or choice == "w":
+            direction = f"{choice}_to"
+            player.current_room = getattr(player.current_room, direction)
+            print(player.current_room)
         else:
             raise ValueError
     except ValueError:
         print("Please enter a valid direction")
     except AttributeError:
-        print(f"\nThere is no room in that direction. Please try again.")
+        print(f"\nThere is no room in that direction. Please try again.\n")
 
 # Write a loop that:
 #
