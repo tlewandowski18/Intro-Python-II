@@ -5,6 +5,12 @@ class Room:
     def __init__(self, name, description):
         self.name = name
         self.description = description
+        self.items = []
 
     def __str__(self):
-        return f'\nYou have entered the {self.name}.\n\n{self.description}'
+        output =  f'\nYou are in the {self.name}.\n\n{self.description}\nAvailable Items:'
+        i = 1
+        for item in self.items:
+            output += f'\n {i}. {item.name}'
+            i += 1
+        return output + f'\n'
